@@ -163,6 +163,9 @@ class LongGemini(nn.Module):
                     qk_norm,
                     ff_mult,
                     ring_seq_size,
+                    rotary_embed=True,
+                    num_grouped_query_heads= 2,
+                    
                     *args,
                     **kwargs,
                 )
