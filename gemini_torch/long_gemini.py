@@ -41,9 +41,9 @@ class LongGeminiTransformerBlock(nn.Module):
     def __init__(
         self,
         dim: int,
-        depth: int = 32,
+        depth: int = 1,
         dim_head: int = 128,
-        heads: int = 24,
+        heads: int = 8,
         qk_norm: bool = True,
         ff_mult: int = 4,
         ring_seq_size: int = 512,
@@ -69,7 +69,6 @@ class LongGeminiTransformerBlock(nn.Module):
             ring_attn=True,
             ring_seq_size=ring_seq_size,
             prenorm=True,
-            num_grouped_query_heads= 2,
             *args,
             **kwargs,
         )
@@ -122,12 +121,12 @@ class LongGemini(nn.Module):
     def __init__(
         self,
         dim: int,
-        depth: int = 32,
+        depth: int = 1,
         num_tokens: int = 10000,
         seq_len: int = 8192,
         dim_head: int = 128,
-        long_gemini_depth: int = 9,
-        heads: int = 24,
+        long_gemini_depth: int = 1,
+        heads: int = 8,
         qk_norm: bool = True,
         ff_mult: int = 4,
         ring_seq_size: int = 512,
@@ -161,10 +160,7 @@ class LongGemini(nn.Module):
                     heads,
                     qk_norm,
                     ff_mult,
-                    ring_seq_size,
-                    rotary_embed=True,
-                    num_grouped_query_heads= 2,
-                    
+                    ring_seq_size,                    
                     *args,
                     **kwargs,
                 )
