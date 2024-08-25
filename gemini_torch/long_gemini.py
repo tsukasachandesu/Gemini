@@ -69,7 +69,6 @@ class LongGeminiTransformerBlock(nn.Module):
             ring_attn=True,
             ring_seq_size=ring_seq_size,
             prenorm=True,
-            rotary_embed=True,
             num_grouped_query_heads= 2,
             *args,
             **kwargs,
